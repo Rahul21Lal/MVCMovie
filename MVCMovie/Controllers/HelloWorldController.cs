@@ -8,6 +8,9 @@ namespace MVCMovie.Controllers
 {
     public class HelloWorldController : Controller
     {
+        string name;
+        string numTimes;
+
         // GET: /HelloWorld/ 
         public ActionResult Index()
         {
@@ -16,9 +19,19 @@ namespace MVCMovie.Controllers
         
 
         // GET: /HelloWorld/Welcome/ 
-        public string Welcome(string name, string numTimes)
+        /*
+            public string Welcome(string name, string numTimes)
+            {
+                return HttpUtility.HtmlEncode("Hello " + name + ", NumTimes is: " + numTimes);
+            }
+        */
+
+        // GET: /HelloWorld/Welcome/ 
+        public ActionResult Welcome(string name, string numTimes)
         {
-            return HttpUtility.HtmlEncode("Hello " + name + ", NumTimes is: " + numTimes);
+            ViewBag.Message = "Hello " + name;
+            ViewBag.numTimes = numTimes;
+            return View();
         }
     }
 }
